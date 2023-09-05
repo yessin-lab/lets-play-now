@@ -15,7 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@lets-play-now/application": ["libs/gathering/application/src/index.ts"]
+      "@lets-play-now/application": ["libs/gathering/application/src/index.ts"],
+      "@lets-play-now/gathering-entities": [
+        "libs/gathering/entities/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
