@@ -10,24 +10,19 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": [
-      "es2020",
-      "dom"
-    ],
+    "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@lets-play-now/application": [
-        "libs/gathering/application/src/index.ts"
-      ],
+      "@lets-play-now/application": ["libs/gathering/application/src/index.ts"],
       "@lets-play-now/gathering-entities": [
         "libs/gathering/entities/src/index.ts"
+      ],
+      "@lets-play-now/gathering-infrastructure": [
+        "libs/gathering/infrastructure/src/index.ts"
       ]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }

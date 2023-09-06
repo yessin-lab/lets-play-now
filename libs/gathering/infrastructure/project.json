@@ -1,0 +1,37 @@
+{
+  "name": "gathering-infrastructure",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/gathering/infrastructure/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/gathering/infrastructure",
+        "main": "libs/gathering/infrastructure/src/index.ts",
+        "tsConfig": "libs/gathering/infrastructure/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/gathering/infrastructure/**/*.ts",
+          "libs/gathering/infrastructure/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../../coverage/libs/gathering/infrastructure"
+      }
+    }
+  },
+  "tags": ["infrastructure"]
+}
