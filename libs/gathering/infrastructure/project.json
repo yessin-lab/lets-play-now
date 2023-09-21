@@ -24,13 +24,20 @@
         ]
       }
     },
+    "pre-test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "echo \"ça charge...\"; sleep 2;"
+      }
+    },
     "test": {
       "executor": "@nx/vite:test",
       "outputs": ["{options.reportsDirectory}"],
       "options": {
         "passWithNoTests": true,
         "reportsDirectory": "../../../coverage/libs/gathering/infrastructure"
-      }
+      },
+      "dependsOn": ["pre-test"]
     }
   },
   "tags": ["infrastructure"]
