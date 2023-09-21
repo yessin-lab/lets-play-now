@@ -22,7 +22,7 @@
   "sourceMaps": true,
   "exclude": [
     "jest.config.ts",
-    ".*\\.spec.tsx?$",
+    // ".*\\.spec.tsx?$", TODO: exclude .spec.ts from production build
     ".*\\.test.tsx?$",
     "./src/jest-setup.ts$",
     "./**/jest-setup.ts$",

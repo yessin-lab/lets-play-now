@@ -2,21 +2,21 @@ import { CreateSessionSpy, ICreateSession } from '@lets-play-now/application';
 import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import request from 'supertest';
-import { CreateSessionModule } from './create-session.module';
 import { describe, beforeEach, afterEach, it } from 'vitest';
+import { CreateSessionModule } from './create-session.module';
 
 describe('create-session', () => {
   let app: INestApplication;
-  // let createSession: CreateSessionSpy;
+  let createSession: CreateSessionSpy;
 
   beforeEach(async () => {
-    // createSession = new CreateSessionSpy();
+    createSession = new CreateSessionSpy();
 
     const moduleRef = await Test.createTestingModule({
       imports: [CreateSessionModule],
     })
       .overrideProvider(ICreateSession)
-      .useClass(CreateSessionSpy)
+      .useValue(createSession)
       .compile();
 
     app = moduleRef.createNestApplication();
