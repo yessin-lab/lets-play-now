@@ -6,7 +6,10 @@ export class Slot {
   }
 
   equals(other: Slot): boolean {
-    return this.start === other.start && this.end === other.end;
+    return (
+      this.start.getTime() === other.start.getTime() &&
+      this.end.getTime() === other.end.getTime()
+    );
   }
 }
 
