@@ -1,10 +1,11 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { ICreateSession } from '@lets-play-now/application';
-import { Location, Slot } from '@lets-play-now/gathering-entities';
+import { Location, SessionId, Slot } from '@lets-play-now/gathering-entities';
 
 class CreateSessionDto {
   location!: { city: string; postalCode: string; address: string };
   slot!: { start: string; end: string };
+  id!: string;
 }
 
 @Controller('create-session')
@@ -19,7 +20,8 @@ export class CreateSessionController {
       dto.location.address
     );
     const slot = new Slot(new Date(dto.slot.start), new Date(dto.slot.end));
+    const id = new SessionId(dto.id);
 
-    return this.createSession.handle({ location, slot });
+    return this.createSession.handle({ id, location, slot });
   }
 }

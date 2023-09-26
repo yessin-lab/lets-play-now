@@ -1,12 +1,11 @@
-import { Slot } from "../value-objects/slot/slot";
-import { Location } from "../value-objects/location/location";
+import { Slot } from '../value-objects/slot/slot';
+import { Location } from '../value-objects/location/location';
+import { SessionId } from '../value-objects/session-id/session-id';
 
 export class Session {
-  private location: Location;
-  private slot: Slot;
-
-  constructor(location: Location, slot: Slot) {
-    this.location = location;
-    this.slot = slot;
-  }
+  constructor(
+    private readonly id: SessionId,
+    private readonly location: Location,
+    private readonly slot: Slot
+  ) {}
 }
