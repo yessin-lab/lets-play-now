@@ -4,4 +4,8 @@ export class SessionId {
   equals(other: SessionId): boolean {
     return this.sessionId === other.sessionId;
   }
+
+  asString(): string {
+    return this.sessionId
+  }
 }

@@ -11,6 +11,14 @@ export class Slot {
       this.end.getTime() === other.end.getTime()
     );
   }
+
+  getStart(): Date {
+    return this.start
+  }
+
+    getEnd(): Date {
+    return this.end
+  }
 }
 
 export class EndShouldBeAfterStart {}

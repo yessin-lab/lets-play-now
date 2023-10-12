@@ -12,4 +12,16 @@ export class Location {
       this.postalCode === other.postalCode
     );
   }
+
+  getCity(): string {
+    return this.city
+  }
+
+  getAddress(): string {
+    return this.address
+  }
+  
+  getPostalCode(): string {
+    return this.postalCode
+  }
 }
