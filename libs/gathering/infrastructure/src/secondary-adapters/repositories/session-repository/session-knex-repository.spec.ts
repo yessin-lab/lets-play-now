@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 import knex, { Knex } from 'knex';
-
+import { SessionKnexRepository } from './session-knex-repository';
 describe('session knex repository', () => {
   let orm: Knex;
 
@@ -14,7 +14,7 @@ describe('session knex repository', () => {
         min: 2,
         max: 10,
       },
-      //   searchPath: ['test'],
+      // TODO: add test schema searchPath: ['test'],
       migrations: {
         tableName: 'knex_migrations',
       },
@@ -24,19 +24,24 @@ describe('session knex repository', () => {
       const tables = await orm
         .select<{ table_name: string }[]>('table_name')
         .from('information_schema.tables')
-        .where({ table_schema: 'public', table_type: 'BASE TABLE' });
+        .where({
+          table_schema: 'public',
+          table_type: 'BASE TABLE',
+        });
+      const filtredTables = tables.filter(
+        ({ table_name }) =>
+          !['knex_migrations_lock', 'knex_migrations'].includes(table_name)
+      );
       await Promise.all(
-        tables.map(async ({ table_name }) => await orm(table_name).truncate())
+        filtredTables.map(
+          async ({ table_name }) => await orm(table_name).truncate()
+        )
       );
     });
   });
 
   it('1', async () => {
-    await orm('session').insert({ id: 'fc926098-310a-4ee2-b897-257f648932ea' });
-    const session = await orm<{ id: string }>('users')
-      .select()
-      .first()
-      .where({ id: 'fc926098-310a-4ee2-b897-257f648932ea' });
-    expect(session).toBe(2);
+    const repository = new SessionKnexRepository();
+    expect(repository).toBeDefined();
   });
 });

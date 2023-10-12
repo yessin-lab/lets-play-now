@@ -1,7 +1,5 @@
-import { Knex } from "knex"
-
-
-export async function up(knex: Knex): Promise<void> {
+// TODO PASS TO TS PLZ
+exports.up = async function up(knex) {
     return knex.schema.createTable('session', function(t) {
       t.uuid('id').primary();
       t.string('city', 100);
@@ -13,7 +11,7 @@ export async function up(knex: Knex): Promise<void> {
   }
 
 
-export async function down(knex: Knex): Promise<void> {
+exports.down = async function down(knex) {
     return knex.schema.dropTable('session');
 }
 
