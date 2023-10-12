@@ -1,4 +1,4 @@
-import type { Knex } from 'knex';
+import type { Knex } from 'knex'
 
 // Update with your config settings.
 
@@ -6,9 +6,7 @@ const config: { [key: string]: Knex.Config } = {
   development: {
     client: 'postgresql',
     connection: {
-      database: 'letsplaynow',
-      user: 'admin',
-      password: 'admin',
+      connectionString: 'postgres://admin:admin@localhost:5432/letsplaynow',
     },
     pool: {
       min: 2,
