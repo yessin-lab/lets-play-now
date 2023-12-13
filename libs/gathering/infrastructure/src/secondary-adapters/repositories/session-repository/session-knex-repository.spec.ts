@@ -5,8 +5,8 @@ import {
   Slot,
 } from '@lets-play-now/gathering-entities';
 import knex, { Knex } from 'knex';
-import { beforeEach, describe, expect, it } from 'vitest';
 import { SessionKnexRepository } from './session-knex-repository';
+
 describe('session knex repository', () => {
   let orm: Knex;
 
@@ -46,6 +46,10 @@ describe('session knex repository', () => {
     });
   });
 
+  afterEach(async () => {
+    await orm.destroy();
+  });
+
   it('save should insert session into database', async () => {
     const repository = new SessionKnexRepository(orm);
 
@@ -61,7 +65,6 @@ describe('session knex repository', () => {
     const sessionFound = await orm('session').select().where({
       id: sessionId.asString(),
     });
-
     expect(sessionFound).toEqual([
       {
         id: sessionId.asString(),

@@ -1,4 +1,3 @@
-import { describe, expect, test } from 'vitest';
 import { EndShouldBeAfterStart, Slot } from './slot';
 
 describe('slot', () => {

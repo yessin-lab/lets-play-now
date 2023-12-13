@@ -25,13 +25,16 @@
       }
     },
     "test": {
-      "executor": "@nx/vite:test",
-      "outputs": ["{options.reportsDirectory}"],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "passWithNoTests": true,
-        "reportsDirectory": "../../../coverage/libs/gathering/infrastructure"
+        "jestConfig": "libs/gathering/infrastructure/jest.config.ts"
       },
-      "dependsOn": ["pre-test"]
+      "configurations": {
+        "watch": {
+          "watch": true
+        }
+      }
     }
   },
   "tags": ["infrastructure"]

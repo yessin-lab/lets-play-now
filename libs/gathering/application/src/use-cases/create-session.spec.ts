@@ -1,5 +1,4 @@
 import { Location, SessionId, Slot } from '@lets-play-now/gathering-entities';
-import { describe, expect, test } from 'vitest';
 import { CreateSession } from './create-session';
 import { SessionInMemoryRepository } from '../repositories/session-in-memory-repository';
 

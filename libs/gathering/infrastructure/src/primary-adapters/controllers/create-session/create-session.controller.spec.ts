@@ -2,7 +2,6 @@ import { CreateSessionSpy, ICreateSession } from '@lets-play-now/application';
 import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import request from 'supertest';
-import { describe, beforeEach, afterEach, it } from 'vitest';
 import { CreateSessionModule } from './create-session.module';
 import { Location, SessionId, Slot } from '@lets-play-now/gathering-entities';
 
