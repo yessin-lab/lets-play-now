@@ -3,9 +3,9 @@ import {
   Session,
   SessionId,
   Slot,
-} from '@lets-play-now/gathering-entities';
-import knex, { Knex } from 'knex';
-import { SessionKnexRepository } from './session-knex-repository';
+} from '@lets-play-now/gathering-entities'
+import knex, { Knex } from 'knex'
+import { SessionKnexRepository } from './session-knex-repository'
 
 describe('session knex repository', () => {
   let orm: Knex;
@@ -20,7 +20,6 @@ describe('session knex repository', () => {
         min: 2,
         max: 10,
       },
-      // TODO: add test schema searchPath: ['test'],
       migrations: {
         tableName: 'knex_migrations',
       },
@@ -73,6 +72,44 @@ describe('session knex repository', () => {
         city: location.getCity(),
         start: slot.getStart(),
         end: slot.getEnd(),
+      },
+    ]);
+  });
+
+  it('should find sessions by slot', async () => {
+    await orm('session').insert([
+      {
+        id: '32b19477-a418-4aba-9da8-ba953fc38c25',
+        address: '16 rue toi meme',
+        postal_code: '94300',
+        city: 'Vincenneuh',
+        start: new Date('2023-09-06T14:30:00'),
+        end: new Date('2023-09-06T17:30:00'),
+      },
+      {
+        id: 'bb35309e-fbba-4b6c-b69c-76ccce40898f',
+        address: '17 rue des patates',
+        postal_code: '94300',
+        city: 'Vincenneuh',
+        start: new Date('2023-09-06T18:30:00'),
+        end: new Date('2023-09-06T22:30:00'),
+      },
+    ]);
+    const repository = new SessionKnexRepository(orm);
+
+    const start = new Date('2023-09-06T18:00:00');
+    const end = new Date('2023-09-06T23:00:00');
+    const slot = new Slot(start, end);
+    const sessions = await repository.findMatchingSessions(slot);
+
+    expect(sessions).toEqual([
+      {
+        id: 'bb35309e-fbba-4b6c-b69c-76ccce40898f',
+        address: '17 rue des patates',
+        postal_code: '94300',
+        city: 'Vincenneuh',
+        start: new Date('2023-09-06T18:30:00'),
+        end: new Date('2023-09-06T22:30:00'),
       },
     ]);
   });

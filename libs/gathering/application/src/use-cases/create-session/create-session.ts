@@ -1,5 +1,5 @@
 import { Location, SessionId, Slot } from '@lets-play-now/gathering-entities';
-import { SessionRepository } from '../repositories/session-repository';
+import { SessionRepository } from '../../repositories/session-repository';
 import { Session } from '@lets-play-now/gathering-entities';
 import { ICreateSession } from './create-session.interface';
 

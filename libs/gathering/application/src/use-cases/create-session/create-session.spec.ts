@@ -1,9 +1,9 @@
 import { Location, SessionId, Slot } from '@lets-play-now/gathering-entities';
 import { CreateSession } from './create-session';
-import { SessionInMemoryRepository } from '../repositories/session-in-memory-repository';
+import { SessionInMemoryRepository } from '../../repositories/session-in-memory-repository';
 
 describe('Create Session', () => {
-  test('a test', () => {
+  it('should create session', () => {
     const id = new SessionId('9af34938-fd72-4bb5-838d-9931a5a7fcb7');
     const location = new Location('Vincenneuh', '94300', '17 rue des patates');
     const start = new Date('2023-09-06T18:30:00');

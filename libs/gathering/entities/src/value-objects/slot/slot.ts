@@ -1,6 +1,6 @@
 export class Slot {
   constructor(private readonly start: Date, private readonly end: Date) {
-    if (end < start) {
+    if (end <= start) {
       throw new EndShouldBeAfterStart();
     }
   }
