@@ -1,6 +1,5 @@
 # Things to do:
 
-- MatchSession -> real implementation []
 - CQRS
 - Initier le projet frontend
 - Revoir l'architecture
@@ -11,7 +10,7 @@
 - Gestion d'erreur (ex: err db)
 - Ajouter des e2e (+ definir si ca part du front ou du back aussi)
 - Ajouter de la validation sur les dto de controller
-- 
+- Module database Knex
 
 # Exigences métier:
 

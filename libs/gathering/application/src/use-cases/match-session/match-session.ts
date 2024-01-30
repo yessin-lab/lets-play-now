@@ -1,5 +1,5 @@
-import { Location, Slot } from '@lets-play-now/gathering-entities';
-import { SessionRepository } from '../../repositories/session-repository';
+import { Location, Slot } from '@lets-play-now/gathering-entities'
+import { SessionRepository } from '../../repositories/session-repository'
 
 export class GetMatchingSession {
   constructor(private readonly sessionRepository: SessionRepository) {}
