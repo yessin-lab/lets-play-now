@@ -1,6 +1,6 @@
-import { SessionRepository } from '@lets-play-now/application'
-import { Session, Slot } from '@lets-play-now/gathering-entities'
-import { Knex } from 'knex'
+import { SessionRepository } from '@lets-play-now/application';
+import { Location, Session, Slot } from '@lets-play-now/gathering-entities';
+import { Knex } from 'knex';
 
 export class SessionKnexRepository implements SessionRepository {
   constructor(private readonly knex: Knex) {}
@@ -16,9 +16,13 @@ export class SessionKnexRepository implements SessionRepository {
     });
   }
 
-  async findMatchingSessions(slot: Slot): Promise<Session[]> {
+  async findMatchingSessions(
+    slot: Slot,
+    location: Location
+  ): Promise<Session[]> {
     return this.knex('session')
       .where('start', '>=', slot.getStart())
-      .andWhere('end', '<=', slot.getEnd());
+      .andWhere('end', '<=', slot.getEnd())
+      .andWhere('city', '=', location.getCity());
   }
 }

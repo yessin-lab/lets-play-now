@@ -12,11 +12,12 @@ describe('Match Session', () => {
     const start = new Date('2022-12-17T03:00:00');
     const end = new Date('2022-12-17T04:00:00');
     const availability = new Slot(start, end);
+    const location = new Location('Vincenneuh', '94300', '17 rue des patates');
 
     const repository = new SessionInMemoryRepository();
     const matchSession = new MatchSession(repository);
 
-    const sessions = await matchSession.handle(availability);
+    const sessions = await matchSession.handle(availability, location);
     expect(sessions).toEqual([]);
   });
 
@@ -37,7 +38,7 @@ describe('Match Session', () => {
     repository.save(session);
     const matchSession = new MatchSession(repository);
 
-    const sessions = await matchSession.handle(availability);
+    const sessions = await matchSession.handle(availability, location);
     expect(sessions).toEqual([session]);
   });
 });

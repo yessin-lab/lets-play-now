@@ -1,5 +1,5 @@
-import { Session, Slot } from '@lets-play-now/gathering-entities'
-import { SessionRepository } from './session-repository'
+import { Session, Slot } from '@lets-play-now/gathering-entities';
+import { SessionRepository } from './session-repository';
 
 export class SessionInMemoryRepository implements SessionRepository {
   private sessions: Session[] = [];
@@ -14,6 +14,6 @@ export class SessionInMemoryRepository implements SessionRepository {
   }
 
   async findMatchingSessions(slot: Slot): Promise<Session[]> {
-    return this.sessions
+    return this.sessions;
   }
-};
+}

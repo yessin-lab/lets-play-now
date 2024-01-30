@@ -3,9 +3,9 @@ import {
   Session,
   SessionId,
   Slot,
-} from '@lets-play-now/gathering-entities'
-import knex, { Knex } from 'knex'
-import { SessionKnexRepository } from './session-knex-repository'
+} from '@lets-play-now/gathering-entities';
+import knex, { Knex } from 'knex';
+import { SessionKnexRepository } from './session-knex-repository';
 
 describe('session knex repository', () => {
   let orm: Knex;
@@ -94,13 +94,22 @@ describe('session knex repository', () => {
         start: new Date('2023-09-06T18:30:00'),
         end: new Date('2023-09-06T22:30:00'),
       },
+      {
+        id: 'f05841e0-517c-4f5c-aed3-848db4510a99',
+        address: '12 avenue toto',
+        postal_code: '93100',
+        city: 'Montreuil',
+        start: new Date('2023-09-06T18:30:00'),
+        end: new Date('2023-09-06T22:30:00'),
+      },
     ]);
     const repository = new SessionKnexRepository(orm);
 
     const start = new Date('2023-09-06T18:00:00');
     const end = new Date('2023-09-06T23:00:00');
     const slot = new Slot(start, end);
-    const sessions = await repository.findMatchingSessions(slot);
+    const location = new Location('Vincenneuh', '94300', '17 rue des patates');
+    const sessions = await repository.findMatchingSessions(slot, location);
 
     expect(sessions).toEqual([
       {

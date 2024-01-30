@@ -1,6 +1,6 @@
-import { Session, Slot } from '@lets-play-now/gathering-entities'
+import { Location, Session, Slot } from '@lets-play-now/gathering-entities';
 
 export interface SessionRepository {
   save(session: Session): Promise<void>;
-  findMatchingSessions(slot: Slot): Promise<Session[]>;
+  findMatchingSessions(slot: Slot, location: Location): Promise<Session[]>;
 }
