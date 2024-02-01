@@ -5,11 +5,10 @@ import { Location, Slot } from '@lets-play-now/gathering-entities';
 class GetMatchingSessionDto {
   city!: string;
   postalCode!: string;
-  address!: string
+  address!: string;
   start!: string;
   end!: string;
-};
-
+}
 
 @Controller('matching-session')
 export class GetMatchingSessionController {
@@ -17,11 +16,7 @@ export class GetMatchingSessionController {
 
   @Get()
   handle(@Query() dto: GetMatchingSessionDto) {
-    const location = new Location(
-      dto.city,
-      dto.postalCode,
-      dto.address
-    );
+    const location = new Location(dto.city, dto.postalCode, dto.address);
     const slot = new Slot(new Date(dto.start), new Date(dto.end));
 
     return this.getMatchingSession.handle(slot, location);
