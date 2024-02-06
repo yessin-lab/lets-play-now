@@ -21,4 +21,8 @@ export class Slot {
   }
 }
 
-export class EndShouldBeAfterStart {}
+export class EndShouldBeAfterStart extends Error {
+  constructor() {
+    super('End date should be after stard date');
+  }
+}

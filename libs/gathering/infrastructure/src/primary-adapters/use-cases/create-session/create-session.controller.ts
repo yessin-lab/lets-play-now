@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, HttpException, Post } from '@nestjs/common';
 import { ICreateSession } from '@lets-play-now/application';
 import { Location, SessionId, Slot } from '@lets-play-now/gathering-entities';
 
@@ -14,14 +14,18 @@ export class CreateSessionController {
 
   @Post()
   postCreateSession(@Body() dto: CreateSessionDto): Promise<void> {
-    const location = new Location(
-      dto.location.city,
-      dto.location.postalCode,
-      dto.location.address
-    );
-    const slot = new Slot(new Date(dto.slot.start), new Date(dto.slot.end));
-    const id = new SessionId(dto.id);
+    try {
+      const location = new Location(
+        dto.location.city,
+        dto.location.postalCode,
+        dto.location.address
+      );
+      const slot = new Slot(new Date(dto.slot.start), new Date(dto.slot.end));
+      const id = new SessionId(dto.id);
 
-    return this.createSession.handle({ id, location, slot });
+      return this.createSession.handle({ id, location, slot });
+    } catch (error: any) {
+      throw new HttpException(error, 500);
+    }
   }
 }
