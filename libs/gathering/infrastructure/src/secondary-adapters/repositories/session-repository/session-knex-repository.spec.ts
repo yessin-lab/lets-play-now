@@ -22,6 +22,7 @@ describe('session knex repository', () => {
       },
       migrations: {
         tableName: 'knex_migrations',
+        directory: './apps/lets-play-now/migrations',
       },
     });
 
