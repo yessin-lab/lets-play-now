@@ -16,12 +16,15 @@
     "baseUrl": ".",
     "esModuleInterop": true,
     "paths": {
-      "@lets-play-now/application": ["libs/gathering/application/src/index.ts"],
-      "@lets-play-now/gathering-entities": [
-        "libs/gathering/entities/src/index.ts"
+      "@lets-play-now/choc/gathering-entities": [
+        "libs/choc/gathering-entities/src/index.ts"
       ],
-      "@lets-play-now/gathering-infrastructure": [
-        "libs/gathering/infrastructure/src/index.ts"
+      "@lets-play-now/choc/gathering-infrastructure": [
+        "libs/choc/gathering-infrastructure/src/index.ts"
+      ],
+      "@lets-play-now/gathering": ["libs/gathering/src/index.ts"],
+      "@lets-play-now/tmp/gathering-application": [
+        "libs/tmp/gathering-application/src/index.ts"
       ]
     }
   },
