@@ -13,49 +13,7 @@
         "*.tsx",
         "*.js",
         "*.jsx"
-      ],
-      "rules": {
-        "@nx/enforce-module-boundaries": [
-          "error",
-          {
-            "enforceBuildableLibDependency": true,
-            "allow": [],
-            "depConstraints": [
-              {
-                "sourceTag": "",
-                "onlyDependOnLibsWithTags": [
-                  ""
-                ]
-              },
-              {
-                "sourceTag": "entities",
-                "notDependOnLibsWithTags": [
-                  "application",
-                  "infrastructure"
-                ],
-                "onlyDependOnLibsWithTags": []
-              },
-              {
-                "sourceTag": "application",
-                "notDependOnLibsWithTags": [
-                  "infrastructure"
-                ],
-                "onlyDependOnLibsWithTags": [
-                  "entities"
-                ]
-              },
-              {
-                "sourceTag": "infrastructure",
-                "notDependOnLibsWithTags": [],
-                "onlyDependOnLibsWithTags": [
-                  "application",
-                  "entities"
-                ]
-              }
-            ]
-          }
-        ]
-      }
+      ]
     },
     {
       "files": [

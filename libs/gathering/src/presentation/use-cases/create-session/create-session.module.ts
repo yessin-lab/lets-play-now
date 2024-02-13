@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { CreateSessionController } from './create-session.controller';
-import { CreateSession, ICreateSession } from '../../../../application';
-import { SessionKnexRepository } from '../../../secondary-adapters/repositories/session-repository/session-knex-repository';
+import { CreateSession, ICreateSession } from '../../../application';
+import { SessionKnexRepository } from '../../../infrastructure';
 import { KnexModule, KnexProvider } from '../../setup/database/knex.module';
 
 @Module({

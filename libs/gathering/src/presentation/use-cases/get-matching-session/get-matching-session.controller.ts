@@ -1,5 +1,5 @@
 import { Query, Controller, Get } from '@nestjs/common';
-import { GetMatchingSession } from '../../../../application';
+import { GetMatchingSession } from '../../../application';
 import { Location, Slot } from 'libs/gathering/src/entities';
 
 class GetMatchingSessionDto {

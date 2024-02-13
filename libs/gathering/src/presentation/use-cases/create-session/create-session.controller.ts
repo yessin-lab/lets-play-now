@@ -1,5 +1,5 @@
 import { Body, Controller, HttpException, Post } from '@nestjs/common';
-import { ICreateSession } from '../../../../application';
+import { ICreateSession } from '../../../application';
 import { Location, SessionId, Slot } from 'libs/gathering/src/entities';
 
 class CreateSessionDto {

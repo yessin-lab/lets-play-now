@@ -1,4 +1,4 @@
-import { SessionRepository } from '../../../../application';
+import { SessionRepository } from '../../../application';
 import { Location, Session, Slot } from 'libs/gathering/src/entities';
 import { Knex } from 'knex';
 

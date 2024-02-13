@@ -1,1 +1,1 @@
-export { GatheringModule } from './primary-adapters/gathering.module';
+export { SessionKnexRepository } from './repositories/session-repository/session-knex-repository';

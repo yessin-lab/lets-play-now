@@ -4,10 +4,10 @@
 - [x] Module database Knex
 - [ ] CQRS
 - [ ] Initier le projet frontend
-- [ ] Revoir l'architecture
-  - [ ] Bouger primary-adapters dans Presentation layer
-  - [ ] Lib par bounded context plutôt que par layer
-  - [ ] S'assurer de pouvoir retirer le TODO apps/lets-play-now/src/app/app.module.ts
+- [x] Revoir l'architecture
+  - [x] Bouger primary-adapters dans Presentation layer
+  - [x] Lib par bounded context plutôt que par layer
+  - [x] S'assurer de pouvoir retirer le TODO apps/lets-play-now/src/app/app.module.ts
 - [ ] Ajouter des tests d'architecture (ex: dependency cruiser, tsarch)
 - [ ] Gestion d'erreur (ex: err db)
 - [ ] Ajouter des e2e (+ definir si ca part du front ou du back aussi)

@@ -1,1 +1,1 @@
-export { GatheringModule } from './infrastructure';
+export { GatheringModule } from './presentation';
