@@ -13,6 +13,8 @@
 - [ ] Ajouter des e2e (+ definir si ca part du front ou du back aussi)
 - [ ] Ajouter de la validation sur les dto de controller
 - [x] Automatiser les migration au lancement du serveur
+- [ ] CI
+- [ ] CD
 
 # Lunch Projet
 
