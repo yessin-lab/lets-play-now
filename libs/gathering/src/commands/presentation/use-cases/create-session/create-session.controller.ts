@@ -1,6 +1,6 @@
 import { Body, Controller, HttpException, Post } from '@nestjs/common';
 import { ICreateSession } from '../../../application';
-import { Location, SessionId, Slot } from 'libs/gathering/src/entities';
+import { SessionId, Slot, Location } from '../../../entities';
 
 class CreateSessionDto {
   location!: { city: string; postalCode: string; address: string };
