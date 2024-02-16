@@ -3,7 +3,7 @@ import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import request from 'supertest';
 import { CreateSessionModule } from './create-session.module';
-import { Location, SessionId, Slot } from 'libs/gathering/src/entities';
+import { SessionId, Slot, Location } from '../../../entities';
 
 describe('create-session', () => {
   let app: INestApplication;

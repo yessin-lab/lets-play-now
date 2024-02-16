@@ -1,8 +1,10 @@
+import {
+  GatheringCommandsModule,
+  GatheringQueriesModule,
+} from '@lets-play-now/gathering';
 import { Module } from '@nestjs/common';
 
-import { GatheringModule } from '@lets-play-now/gathering';
-
 @Module({
-  imports: [GatheringModule],
+  imports: [GatheringCommandsModule, GatheringQueriesModule],
 })
 export class AppModule {}

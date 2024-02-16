@@ -1,6 +1,6 @@
 import { SessionRepository } from '../../../application';
-import { Location, Session, Slot } from 'libs/gathering/src/entities';
 import { Knex } from 'knex';
+import { Session } from '../../../entities';
 
 export class SessionKnexRepository implements SessionRepository {
   constructor(private readonly knex: Knex) {}
@@ -14,15 +14,5 @@ export class SessionKnexRepository implements SessionRepository {
       start: session.slot.getStart(),
       end: session.slot.getEnd(),
     });
-  }
-
-  async findMatchingSessions(
-    slot: Slot,
-    location: Location
-  ): Promise<Session[]> {
-    return this.knex('session')
-      .where('start', '>=', slot.getStart())
-      .andWhere('end', '<=', slot.getEnd())
-      .andWhere('city', '=', location.getCity());
   }
 }

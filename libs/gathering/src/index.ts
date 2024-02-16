@@ -1,1 +1,2 @@
-export { GatheringModule } from './presentation';
+export { GatheringCommandsModule } from './commands';
+export { GatheringQueriesModule } from './queries';
