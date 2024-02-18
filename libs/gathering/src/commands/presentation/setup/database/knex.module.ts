@@ -31,4 +31,10 @@ export class KnexProvider {
   ],
   exports: [KnexProvider],
 })
-export class KnexModule {}
+export class KnexModule {
+  constructor(private readonly knexProvider: KnexProvider) {}
+
+  async onModuleDestroy() {
+    await this.knexProvider.knex.destroy();
+  }
+}
