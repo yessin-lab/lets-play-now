@@ -2,7 +2,7 @@
 
 - [x] MatchSession -> real implementation
 - [x] Module database Knex
-- [ ] CQRS
+- [x] Standard CQRS
 - [ ] Initier le projet frontend
 - [x] Revoir l'architecture
   - [x] Bouger primary-adapters dans Presentation layer
