@@ -1,15 +1,22 @@
+import {
+  PostgreSqlContainer,
+  StartedPostgreSqlContainer,
+} from '@testcontainers/postgresql';
 import knex, { Knex } from 'knex';
 import { SessionKnexRepository } from './session-knex-repository';
 import { Session, SessionId, Slot, Location } from '../../../entities';
 
 describe('session knex repository', () => {
+  jest.setTimeout(60000);
+  let postgresContainer: StartedPostgreSqlContainer;
   let orm: Knex;
 
   beforeEach(async () => {
+    postgresContainer = await new PostgreSqlContainer('postgres').start();
     orm = knex({
       client: 'postgresql',
       connection: {
-        connectionString: 'postgres://admin:admin@localhost:5432/letsplaynow',
+        connectionString: postgresContainer.getConnectionUri(),
       },
       pool: {
         min: 2,
@@ -43,6 +50,7 @@ describe('session knex repository', () => {
 
   afterEach(async () => {
     await orm.destroy();
+    await postgresContainer.stop();
   });
 
   it('save should insert session into database', async () => {
@@ -53,8 +61,8 @@ describe('session knex repository', () => {
     const start = new Date('2023-09-06T18:30:00');
     const end = new Date('2023-09-06T22:30:00');
     const slot = new Slot(start, end);
-
     const session = new Session(sessionId, location, slot);
+
     await repository.save(session);
 
     const sessionFound = await orm('session').select().where({
