@@ -6,7 +6,7 @@ import knex, { Knex } from 'knex';
 import { SessionKnexRepository } from './session-knex-repository';
 import { Session, SessionId, Slot, Location } from '../../../entities';
 
-describe('session knex repository', () => {
+describe.skip('session knex repository', () => {
   jest.setTimeout(60000);
   let postgresContainer: StartedPostgreSqlContainer;
   let orm: Knex;

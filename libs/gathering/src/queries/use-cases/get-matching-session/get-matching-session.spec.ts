@@ -1,7 +1,7 @@
 import knex, { Knex } from 'knex';
 import { GetMatchingSession } from './get-matching-session';
 
-describe.skip('get matching session', () => {
+describe('get matching session', () => {
   let orm: Knex;
 
   beforeEach(async () => {
