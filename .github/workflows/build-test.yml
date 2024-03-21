@@ -24,9 +24,7 @@ jobs:
       postgres:
         image: postgres
         env:
-          POSTGRES_USER: admin
-          POSTGRES_PASSWORD: admin
-          POSTGRES_DB: letsplaynow
+          POSTGRES_PASSWORD: postgres
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -34,6 +32,7 @@ jobs:
           --health-retries 5
         ports:
           - 5432:5432
+
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
@@ -43,18 +42,4 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
-      - run: npm install
       - run: npm test
-
-  # test:
-  #   needs: container-job
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: checkout repo
-  #       uses: actions/checkout@v4
-  #     - name: use node.js
-  #       uses: actions/setup-node@v4
-  #       with:
-  #         node-version: '20.x'
-  #     - run: npm install
-  #     - run: npm test

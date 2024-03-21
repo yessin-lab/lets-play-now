@@ -8,7 +8,8 @@ describe('get matching session', () => {
     orm = knex({
       client: 'postgresql',
       connection: {
-        connectionString: 'postgres://admin:admin@localhost:5432/letsplaynow',
+        connectionString:
+          'postgres://postgres:postgres@localhost:5432/postgres',
       },
       pool: {
         min: 2,
