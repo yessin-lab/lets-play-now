@@ -9,7 +9,7 @@ describe('get matching session', () => {
       client: 'postgresql',
       connection: {
         connectionString:
-          'postgres://postgres:postgres@localhost:5432/postgres',
+          process.env['__TEST_CONTAINERS_POSTGRES_CONNECTION_URI'],
       },
       pool: {
         min: 2,

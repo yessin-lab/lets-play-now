@@ -1,4 +1,3 @@
-/* eslint-disable */
 export default {
   displayName: 'gathering',
   preset: '../../jest.preset.js',
@@ -8,4 +7,6 @@ export default {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../coverage/libs/gathering',
+  globalSetup: './src/config/test/setup.ts',
+  globalTeardown: './src/config/test/teardown.ts',
 };
