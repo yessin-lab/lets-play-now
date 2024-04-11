@@ -1,7 +1,7 @@
-import knex from 'knex';
+import knex, { Knex } from 'knex';
 
-export const makeCleanDatabaseOrm = async () => {
-  const orm = knex({
+export const getOrm = () =>
+  knex({
     client: 'postgresql',
     connection: {
       connectionString:
@@ -17,24 +17,37 @@ export const makeCleanDatabaseOrm = async () => {
     },
   });
 
-  await orm.migrate.latest().then(async () => {
-    const tables = await orm
-      .select<{ table_name: string }[]>('table_name')
-      .from('information_schema.tables')
-      .where({
-        table_schema: 'public',
-        table_type: 'BASE TABLE',
-      });
-    const filtredTables = tables.filter(
-      ({ table_name }) =>
-        !['knex_migrations_lock', 'knex_migrations'].includes(table_name)
-    );
-    await Promise.all(
-      filtredTables.map(
-        async ({ table_name }) => await orm(table_name).truncate()
-      )
-    );
-  });
+export const migrate = async () => {
+  const orm = getOrm();
+  await orm.migrate.latest();
+  await orm.destroy();
+};
 
+export const resetDatabase = async (orm: Knex) => {
+  const tables = await orm
+    .select<{ table_name: string }[]>('table_name')
+    .from('information_schema.tables')
+    .where({
+      table_schema: 'public',
+      table_type: 'BASE TABLE',
+    });
+  const tablesNames = tables.map(({ table_name }) => table_name).join(', ');
+  await orm.raw(`truncate ${tablesNames} cascade;`);
+  // await Promise.all(
+  //   tables.map(async ({ table_name }) => orm(table_name).truncate())
+  // );
+};
+
+export const getResetedOrm = async () => {
+  const orm = getOrm();
+  const tables = await orm
+    .select<{ table_name: string }[]>('table_name')
+    .from('information_schema.tables')
+    .where({
+      table_schema: 'public',
+      table_type: 'BASE TABLE',
+    });
+  const tablesNames = tables.map(({ table_name }) => table_name).join(', ');
+  await orm.raw(`truncate ${tablesNames} cascade;`);
   return orm;
 };

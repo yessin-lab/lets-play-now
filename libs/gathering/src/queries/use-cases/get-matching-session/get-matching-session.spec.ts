@@ -1,12 +1,16 @@
-import { Knex } from 'knex';
 import { GetMatchingSession } from './get-matching-session';
-import { makeCleanDatabaseOrm } from '../../../config/test/make-clean-database-orm';
+import {
+  getOrm,
+  resetDatabase,
+} from '../../../config/test/make-clean-database-orm';
+import { Knex } from 'knex';
 
 describe('get matching session', () => {
   let orm: Knex;
 
   beforeEach(async () => {
-    orm = await makeCleanDatabaseOrm();
+    orm = getOrm();
+    await resetDatabase(orm);
   });
 
   afterEach(async () => {

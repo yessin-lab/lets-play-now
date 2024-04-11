@@ -1,13 +1,13 @@
-import { Knex } from 'knex';
 import { SessionKnexRepository } from './session-knex-repository';
 import { Session, SessionId, Slot, Location } from '../../../entities';
-import { makeCleanDatabaseOrm } from '../../../../config/test/make-clean-database-orm';
+import { getResetedOrm } from '../../../../config/test/make-clean-database-orm';
+import { Knex } from 'knex';
 
 describe('session knex repository', () => {
   let orm: Knex;
 
   beforeEach(async () => {
-    orm = await makeCleanDatabaseOrm();
+    orm = await getResetedOrm();
   });
 
   afterEach(async () => {
