@@ -1,17 +1,15 @@
 import { SessionKnexRepository } from './session-knex-repository';
 import { Session, SessionId, Slot, Location } from '../../../entities';
-import { getResetedOrm } from '../../../../config/test/make-clean-database-orm';
-import { Knex } from 'knex';
+import {
+  getOrm,
+  resetDb,
+} from '../../../../config/integration-tests/make-clean-database-orm';
 
 describe('session knex repository', () => {
-  let orm: Knex;
+  const orm = getOrm();
 
   beforeEach(async () => {
-    orm = await getResetedOrm();
-  });
-
-  afterEach(async () => {
-    await orm.destroy();
+    await resetDb(orm);
   });
 
   it('save should insert session into database', async () => {

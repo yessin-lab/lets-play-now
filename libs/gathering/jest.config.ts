@@ -7,6 +7,6 @@ export default {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../coverage/libs/gathering',
-  globalSetup: './src/config/test/setup.ts',
-  globalTeardown: './src/config/test/teardown.ts',
+  globalSetup: './src/config/integration-tests/setup.ts',
+  globalTeardown: './src/config/integration-tests/teardown.ts',
 };

@@ -1,20 +1,14 @@
 import { GetMatchingSession } from './get-matching-session';
 import {
   getOrm,
-  resetDatabase,
-} from '../../../config/test/make-clean-database-orm';
-import { Knex } from 'knex';
+  resetDb,
+} from '../../../config/integration-tests/make-clean-database-orm';
 
 describe('get matching session', () => {
-  let orm: Knex;
+  const orm = getOrm();
 
   beforeEach(async () => {
-    orm = getOrm();
-    await resetDatabase(orm);
-  });
-
-  afterEach(async () => {
-    await orm.destroy();
+    await resetDb(orm);
   });
 
   it('should find sessions by slot', async () => {
