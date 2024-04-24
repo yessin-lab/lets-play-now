@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "build": "nx run lets-play-now:build",
-    "test": "nx run-many --target=test --all"
+    "gathering:test:it": "nx run gathering:test:it",
+    "gathering:test:ut": "nx run gathering:test:ut"
   },
   "private": true,
   "dependencies": {
