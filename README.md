@@ -31,6 +31,26 @@ Scope du MVP :
 Permettre des players créer une "Session" sur des horaires et lieu données
 Permettre à des players de trouver des "Sessions" autour de chez eux à un moment données
 
+----- Aider un joueur à choisir une session
+
+- lier une session à un ou plusieur jeux
+  - limites du nombre de jeux ?
+  - pas de doublons dans la liste ?
+  - limite de caractères pour le nom du jeux ?
+
+----- Inscription à une session
+
+- limiter le nombre de joueur
+- joueur: adresse mail
+
+---- Inviter d'autre joueur à ta session
+
+- générer un lien pour prendre une place (affichage stylé)
+
+---- Chat de Session
+
+--- Profil de joueur
+
 Exemple de "Session" :
 // - Jeu/type/categorie : Ark nova/Jeu expert/Deck building/Libre // sur l'evenement
 
