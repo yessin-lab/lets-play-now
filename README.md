@@ -51,15 +51,10 @@ Permettre à des players de trouver des "Sessions" autour de chez eux à un mome
 
 --- Profil de joueur
 
-Exemple de "Session" :
-// - Jeu/type/categorie : Ark nova/Jeu expert/Deck building/Libre // sur l'evenement
+- bibliothèque de jeux
 
-Lieu : 12 rue de la rue // sur l'evenement
-disponibilité : soir, // sur l'evenement
-// - Nb de players max : 4 // sur une session
+--- Permettre à l'organisateur de mettre à disposition sa bibliothèque pour la session
 
-Exemple de Player :
+# Notes pour la prochaine fois:
 
-username
-lieu
-disponibilités
+- implem la partie infra de create-session (ajout des games)
