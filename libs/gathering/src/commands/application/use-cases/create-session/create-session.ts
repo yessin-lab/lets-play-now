@@ -1,4 +1,4 @@
-import { Location, SessionId, Slot } from '../../../entities';
+import { Game, Location, SessionId, Slot } from '../../../entities';
 import { SessionRepository } from '../../repositories/session-repository';
 import { Session } from '../../../entities';
 import { ICreateSession } from './create-session.interface';
@@ -14,11 +14,14 @@ export class CreateSession implements ICreateSession {
     id,
     location,
     slot,
+    games,
   }: {
     id: SessionId;
     location: Location;
     slot: Slot;
+    games: Game[];
   }): Promise<void> {
-    this.sessionRepository.save(new Session(id, location, slot));
+    const session = new Session(id, location, slot, games);
+    this.sessionRepository.save(session);
   }
 }
