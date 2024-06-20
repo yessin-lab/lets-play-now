@@ -1,9 +1,10 @@
-import { CreateSessionSpy, ICreateSession } from '../../../application';
+import { ICreateSession } from '../../../application';
 import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import request from 'supertest';
 import { CreateSessionModule } from './create-session.module';
 import { SessionId, Slot, Location } from '../../../entities';
+import { CreateSessionSpy } from './create-session-spy';
 
 describe('create-session', () => {
   let app: INestApplication;

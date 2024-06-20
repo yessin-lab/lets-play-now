@@ -1,5 +1,5 @@
+import { ICreateSession } from '../../../application';
 import { Location, SessionId, Slot } from '../../../entities';
-import { ICreateSession } from './create-session.interface';
 
 export class CreateSessionSpy implements ICreateSession {
   private id?: SessionId;

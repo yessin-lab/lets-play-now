@@ -4,7 +4,7 @@ import { Session } from '../../../entities';
 import { ICreateSession } from './create-session.interface';
 
 export class CreateSession implements ICreateSession {
-  private readonly sessionRepository;
+  private readonly sessionRepository: SessionRepository;
 
   constructor(sessionRepository: SessionRepository) {
     this.sessionRepository = sessionRepository;
@@ -22,6 +22,6 @@ export class CreateSession implements ICreateSession {
     games: Game[];
   }): Promise<void> {
     const session = new Session(id, location, slot, games);
-    this.sessionRepository.save(session);
+    await this.sessionRepository.save(session);
   }
 }
