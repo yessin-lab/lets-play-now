@@ -3,8 +3,6 @@ import { GetMatchingSession } from './get-matching-session';
 
 class GetMatchingSessionDto {
   city!: string;
-  postalCode!: string;
-  address!: string;
   start!: string;
   end!: string;
 }
