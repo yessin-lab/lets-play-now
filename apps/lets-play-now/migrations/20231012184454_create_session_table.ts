@@ -8,6 +8,7 @@ exports.up = async function up(knex: Knex) {
     t.string('address', 250);
     t.dateTime('start');
     t.dateTime('end');
+    t.specificType('games', 'text ARRAY');
   });
 };
 

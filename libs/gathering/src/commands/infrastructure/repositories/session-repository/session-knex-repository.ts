@@ -13,6 +13,7 @@ export class SessionKnexRepository implements SessionRepository {
       city: session.location.getCity(),
       start: session.slot.getStart(),
       end: session.slot.getEnd(),
+      games: session.games.map(game => game.name),
     });
   }
 }

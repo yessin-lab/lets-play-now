@@ -1,5 +1,5 @@
 import { SessionKnexRepository } from './session-knex-repository';
-import { Session, SessionId, Slot, Location } from '../../../entities';
+import { Session, SessionId, Slot, Location, Game } from '../../../entities';
 import {
   getOrm,
   resetDb,
@@ -20,7 +20,8 @@ describe('session knex repository', () => {
     const start = new Date('2023-09-06T18:30:00');
     const end = new Date('2023-09-06T22:30:00');
     const slot = new Slot(start, end);
-    const session = new Session(sessionId, location, slot);
+    const games = [new Game('7 wonders')];
+    const session = new Session(sessionId, location, slot, games);
 
     await repository.save(session);
 
@@ -35,6 +36,7 @@ describe('session knex repository', () => {
         city: location.getCity(),
         start: slot.getStart(),
         end: slot.getEnd(),
+        games: games.map(game => game.name),
       },
     ]);
   });

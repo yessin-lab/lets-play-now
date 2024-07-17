@@ -20,6 +20,7 @@ describe('get matching session', () => {
         city: 'Vincenneuh',
         start: new Date('2023-09-06T14:30:00'),
         end: new Date('2023-09-06T17:30:00'),
+        games: ['7 wonders'],
       },
       {
         id: 'bb35309e-fbba-4b6c-b69c-76ccce40898f',
@@ -28,6 +29,7 @@ describe('get matching session', () => {
         city: 'Vincenneuh',
         start: new Date('2023-09-06T18:30:00'),
         end: new Date('2023-09-06T22:30:00'),
+        games: ['7 wonders'],
       },
       {
         id: 'f05841e0-517c-4f5c-aed3-848db4510a99',
@@ -36,6 +38,7 @@ describe('get matching session', () => {
         city: 'Montreuil',
         start: new Date('2023-09-06T18:30:00'),
         end: new Date('2023-09-06T22:30:00'),
+        games: ['7 wonders'],
       },
     ]);
     const start = new Date('2023-09-06T18:00:00');
@@ -52,6 +55,7 @@ describe('get matching session', () => {
         city: 'Vincenneuh',
         start: new Date('2023-09-06T18:30:00'),
         end: new Date('2023-09-06T22:30:00'),
+        games: ['7 wonders'],
       },
     ]);
   });
