@@ -1,4 +1,11 @@
-import { Game, Location, SessionId, Slot } from '../../../entities';
+import {
+  Game,
+  Location,
+  Player,
+  SessionId,
+  Slot,
+  Table,
+} from '../../../entities';
 import { CreateSession } from './create-session';
 import { SessionInMemoryRepository } from '../../repositories/session-in-memory-repository';
 
@@ -10,7 +17,11 @@ describe('Create Session', () => {
     const end = new Date('2023-09-06T22:30:00');
     const slot = new Slot(start, end);
     const games = [new Game('Seven Wonders')];
-    const session = { id, location, slot, games };
+    const table = new Table(8, [
+      new Player('player_1@mail.com'),
+      new Player('player_2@mail.com'),
+    ]);
+    const session = { id, location, slot, games, table };
 
     const sessionRepository = new SessionInMemoryRepository();
 
