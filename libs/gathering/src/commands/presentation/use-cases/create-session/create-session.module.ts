@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { CreateSessionController } from './create-session.controller';
-import { CreateSession, ICreateSession } from '../../../application';
+import { CreateSession, SessionRepository } from '../../../application';
 import { SessionKnexRepository } from '../../../infrastructure';
 import { KnexModule, KnexProvider } from '../../setup/database/knex.module';
 
@@ -9,12 +9,14 @@ import { KnexModule, KnexProvider } from '../../setup/database/knex.module';
   imports: [KnexModule],
   providers: [
     {
-      provide: ICreateSession,
+      provide: SessionRepository,
       inject: [KnexProvider],
-      useFactory: ({ knex }: KnexProvider) => {
-        const repo = new SessionKnexRepository(knex);
-        return new CreateSession(repo);
-      },
+      useFactory: ({ knex }: KnexProvider) => new SessionKnexRepository(knex),
+    },
+    {
+      provide: CreateSession,
+      inject: [SessionRepository],
+      useFactory: (sessionRepository) => new CreateSession(sessionRepository),
     },
   ],
 })

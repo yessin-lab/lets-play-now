@@ -1,21 +1,10 @@
-import {
-  Game,
-  Location,
-  Player,
-  SessionId,
-  Slot,
-  Table,
-} from '../../../entities';
+import { Game, Location, SessionId, Slot, Table } from '../../../entities';
 import { SessionRepository } from '../../repositories/session-repository';
 import { Session } from '../../../entities';
 import { ICreateSession } from './create-session.interface';
 
 export class CreateSession implements ICreateSession {
-  private readonly sessionRepository: SessionRepository;
-
-  constructor(sessionRepository: SessionRepository) {
-    this.sessionRepository = sessionRepository;
-  }
+  constructor(private readonly sessionRepository: SessionRepository) {}
 
   async handle({
     id,
