@@ -39,6 +39,10 @@ describe('Create Session', () => {
     const start = new Date('2023-09-06T18:30:00');
     const end = new Date('2023-09-06T22:30:00');
     const slot = new Slot(start, end);
+    const table = new Table(8, [
+      new Player('player_1@mail.com'),
+      new Player('player_2@mail.com'),
+    ]);
     const games = [
       new Game('One Wonders'),
       new Game('Two Wonders'),
@@ -52,7 +56,7 @@ describe('Create Session', () => {
       new Game('Ten Wonders'),
       new Game('Eleven Wonders'),
     ];
-    const session = { id, location, slot, games };
+    const session = { id, location, slot, games, table };
 
     const sessionRepository = new SessionInMemoryRepository();
 
